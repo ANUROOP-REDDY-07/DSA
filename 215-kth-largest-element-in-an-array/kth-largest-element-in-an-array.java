@@ -8,10 +8,6 @@ class Solution {
                 pq.poll();
             }
         }
-
-        
-
         return pq.peek();
-       
     }
 }
