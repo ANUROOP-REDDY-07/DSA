@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    HashMap<Integer,TreeNode> hm=new HashMap<>();
+    Set<Integer> s=new HashSet<>();
     public boolean findTarget(TreeNode root, int k) {
         
         if(root==null){
@@ -22,12 +22,10 @@ class Solution {
         }
 
         int data=k-root.val;
-        if(hm.containsKey(data)){
+        if(s.contains(data)){
             return true;
-        }else{
-            hm.put(root.val,root);
-            
         }
+        s.add(root.val);
         return findTarget(root.left,k) || findTarget(root.right,k);
 
     }
