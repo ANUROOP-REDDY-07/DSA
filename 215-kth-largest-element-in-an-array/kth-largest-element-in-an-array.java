@@ -4,15 +4,14 @@ class Solution {
 
         for(int i=0;i<nums.length;i++){
             pq.add(nums[i]);
+            if(pq.size()>k){
+                pq.poll();
+            }
         }
 
-        int cnt=0;
-        while(cnt<nums.length-k){
-            pq.poll();
-            cnt++;
-        }
+        
 
-        return pq.poll();
+        return pq.peek();
        
     }
 }
