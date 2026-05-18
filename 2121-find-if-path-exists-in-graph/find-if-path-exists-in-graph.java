@@ -1,5 +1,6 @@
 class Solution {
-    public void bfs(ArrayList<Integer> graph[],boolean vis[],int source){
+    public void bfs(ArrayList<Integer> graph[],boolean vis[],int source,int destination){
+        
         Queue<Integer> q=new LinkedList<>();
 
         q.add(source);
@@ -12,12 +13,19 @@ class Solution {
                 if(!vis[dest]){
                     q.add(dest);
                     vis[dest]=true;
+                    if(dest==destination){
+                    return;
+                   }
                 }
             }
         }
     }
 
     public boolean validPath(int n, int[][] edges, int source, int destination) {
+
+        if(source==destination){
+            return true;
+        }
         ArrayList<Integer> graph[]=new ArrayList[n];
         boolean vis[]=new boolean[n];
         for(int i=0;i<n;i++){
@@ -33,7 +41,7 @@ class Solution {
 
         }
 
-        bfs(graph,vis,source);
+        bfs(graph,vis,source,destination);
         
 
         return vis[destination];
