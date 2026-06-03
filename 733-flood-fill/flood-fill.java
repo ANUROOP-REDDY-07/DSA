@@ -12,8 +12,6 @@ class Solution {
         int m=image.length;
         int n=image[0].length;
         boolean[][] vis=new boolean[m][n];
-
-
         int original=image[sr][sc];
 
         Queue<Pair> q=new LinkedList<>();
