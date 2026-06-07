@@ -21,10 +21,9 @@ class Solution {
         TreeNode ans;
 
         for(int i=0;i<descriptions.length;i++){
-            int[] temp=descriptions[i];
-            int parent=temp[0];
-            int child=temp[1];
-            int isLeft=temp[2];
+            int parent=descriptions[i][0];
+            int child=descriptions[i][1];
+            int isLeft=descriptions[i][2];
 
             if(!mp.containsKey(parent)){
                 mp.put(parent,new TreeNode(parent));
