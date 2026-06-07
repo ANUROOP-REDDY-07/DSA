@@ -9,15 +9,17 @@ class Solution {
 
         for(int i=1;i<n;i++){
             left[i]=left[i-1]+nums[i-1];
+            ans[i]=left[i];
         }
 
         for(int i=n-2;i>=0;i--){
             right[i]=right[i+1]+nums[i+1];
+            ans[i]=Math.abs(ans[i]-right[i]);
         }
 
-        for(int i=0;i<n;i++){
-            ans[i]=Math.abs(left[i]-right[i]);
-        }
+        // for(int i=0;i<n;i++){
+        //     ans[i]=Math.abs(left[i]-right[i]);
+        // }
 
         return ans;
     }
