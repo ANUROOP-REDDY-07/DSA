@@ -10,8 +10,11 @@ class Solution {
         }
 
         if(dp[i][j]!=-1) return dp[i][j];
+
+        int right=minSum(grid,m,n,i,j+1,dp);
+        int down=minSum(grid,m,n,i+1,j,dp);
         
-       return dp[i][j]=grid[i][j]+Math.min(minSum(grid,m,n,i,j+1,dp),minSum(grid,m,n,i+1,j,dp));
+       return dp[i][j]=grid[i][j]+Math.min(right,down);
        
 
     }
@@ -29,6 +32,7 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
+
         return minSum(grid,m,n,0,0,dp);
     }
 }
