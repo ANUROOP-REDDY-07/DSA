@@ -6,8 +6,8 @@ class Solution {
         return gcd(b,a%b);
     }
     public int gcdOfOddEvenSums(int n) {
-        int evenSum=n*(n+1);
-        int oddSum=n*n;
-        return gcd(evenSum,oddSum);
+        // int evenSum=n*(n+1);
+        // int oddSum=n*n;
+        return gcd(n*(n+1),n*n);
     }
 }
