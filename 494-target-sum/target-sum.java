@@ -1,23 +1,32 @@
 class Solution {
     
-    int solve(int nums[],int target,int idx,int currSum){
-
-        if(currSum==target && idx==nums.length){
-            return 1;
-        }
-
+    int solve(int nums[],int target,int idx,int currSum,int dp[][],int sum){
+        
         if(idx==nums.length){
-            return 0;
+           return currSum==target?1:0;
         }
 
+       
+        if(dp[idx][currSum+sum]!=-1){
+            return dp[idx][currSum+sum];
+        }
 
                  //positive                                       
-        return solve(nums,target,idx+1,currSum+nums[idx])+
-        solve(nums,target,idx+1,currSum-nums[idx]); //negative
+        return dp[idx][currSum+sum]=solve(nums,target,idx+1,currSum+nums[idx],dp,sum)+
+        solve(nums,target,idx+1,currSum-nums[idx],dp,sum); //negative
         
     }
-    
+
     public int findTargetSumWays(int[] nums, int target) {
-        return solve(nums,target,0,0);
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+        }
+        int dp[][]=new int[nums.length][2*sum+1];
+
+        for(int i=0;i<nums.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return solve(nums,target,0,0,dp,sum);
     }
 }
