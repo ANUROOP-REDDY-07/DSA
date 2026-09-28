@@ -5,19 +5,14 @@ class Solution {
         Stack<Character> st=new Stack<>();
 
         for(int i=0;i<s.length();i++){
-            if(s.charAt(i)=='('){
-                st.push(s.charAt(i));
-                depth++;
-            }else if(s.charAt(i)==')'){
-                maxDepth=Math.max(maxDepth,depth);
-                depth--;
-                while(st.peek()!='('){
-                    st.pop();
-                }
-                st.pop();
-            }else{
-                st.push(s.charAt(i));
-            }
+           if(s.charAt(i)=='('){
+            depth++;
+           }else if(s.charAt(i)==')'){
+            maxDepth=Math.max(maxDepth,depth);
+            depth--;
+           }else{
+            continue;
+           }
         }
 
         return maxDepth;
