@@ -1,7 +1,8 @@
 class Solution {
     public int minAddToMakeValid(String s) {
         Stack<Integer> open=new Stack<>();
-        Stack<Integer> close=new Stack<>();
+        //Stack<Integer> close=new Stack<>();
+        int close=0;
 
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='('){
@@ -10,11 +11,11 @@ class Solution {
                 if(!open.isEmpty()){
                     open.pop();
                 }else{
-                    close.push(i);
+                    close++;
                 }
             }
         }
 
-        return open.size()+close.size();
+        return open.size()+close;
     }
 }
